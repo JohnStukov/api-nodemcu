@@ -10,8 +10,8 @@ import (
 	"time"
 )
 
-	var db = MongoCN.Database("cn-ises")
-	var col = db.Collection("usuarios")
+	var dbU = MongoCN.Database("nosql")
+	var colU = dbU.Collection("usuarios")
 
 /*InsertoRegistro es la parada final con la BD para insertar los datos del usuario */
 func InsertoRegistro(u models.Usuario) (string, bool, error) {
@@ -19,11 +19,10 @@ func InsertoRegistro(u models.Usuario) (string, bool, error) {
 	defer cancel()
 	u.ID = primitive.NewObjectID()
 	u.Password, _ = EncriptarPassword(u.Password)
-	result, err := col.InsertOne(ctx, u)
+	result, err := colU.InsertOne(ctx, u)
 	if err != nil {
 		return "", false, err
 	}
-
 	ObjID, _ := result.InsertedID.(primitive.ObjectID)
 	return ObjID.String(), true, nil
 }
@@ -36,7 +35,7 @@ func BorroUsuario(ID string) error {
 		"_id": objID,
 	}
 
-	_, err := col.DeleteOne(ctx, condicion)
+	_, err := colU.DeleteOne(ctx, condicion)
 	return err
 }
 
@@ -64,7 +63,7 @@ func ModificoRegistro(u models.Usuario, ID string) (bool, error) {
 	//filtar usuario
 	filtro := bson.M{"_id": bson.M{"$eq": objID}}
 	//db
-	_, err := col.UpdateOne(ctx, filtro, updateString)
+	_, err := colU.UpdateOne(ctx, filtro, updateString)
 	if err != nil {
 		return false, err
 	}
@@ -85,7 +84,7 @@ func ListarUsuarios(ID string, page int64, busqueda string) ([]*models.Usuario, 
 		//?i no se fija si son mayusculas y minusculas
 		"nombre": bson.M{"$regex": `(?i)` + busqueda},
 	}
-	cursor, err := col.Find(ctx, qury, findOptions)
+	cursor, err := colU.Find(ctx, qury, findOptions)
 	if err != nil {
 		fmt.Println(err.Error())
 		return resultados, false
@@ -118,7 +117,7 @@ func BuscarUsuario(ID string) (models.Usuario, error) {
 	condicion := bson.M{
 		"_id": objID,
 	}
-	err := col.FindOne(ctx, condicion).Decode(&usuario)
+	err := colU.FindOne(ctx, condicion).Decode(&usuario)
 	usuario.Password = ""
 	if err != nil {
 		fmt.Println("registro no encontrado " + err.Error())
@@ -133,7 +132,7 @@ func RevisarSiExisteUsuario(email string) (models.Usuario, bool, string) {
 	defer cancel()
 	condicion := bson.M{"email": email}
 	var resultado models.Usuario
-	err := col.FindOne(ctx, condicion).Decode(&resultado)
+	err := colU.FindOne(ctx, condicion).Decode(&resultado)
 	ID := resultado.ID.Hex()
 	if err != nil {
 		return resultado, false, ID
