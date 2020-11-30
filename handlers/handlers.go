@@ -24,6 +24,8 @@ func Manejadores() {
 	router.HandleFunc("/usuarios", middleW.RevisarDB(middleW.ValidoJWT(routers.ListarUsuarios))).Methods("GET")
 	//-----------------------------NODEMCUS---------------------------------//
 	router.HandleFunc("/nodemcu", middleW.RevisarDB(routers.CrearRegistro)).Methods("POST")
+	router.HandleFunc("/nodemcu", middleW.RevisarDB(middleW.ValidoJWT(routers.ListarDatos))).Methods("GET")
+
 	//----------------------------------------------------------------------//
 
 	PORT := os.Getenv("PORT")

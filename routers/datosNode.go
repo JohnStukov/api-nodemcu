@@ -6,6 +6,7 @@ import (
 	"github.com/Ignis-Divine/api-nodemcu/models"
 	"log"
 	"net/http"
+	"strconv"
 	"strings"
 )
 
@@ -37,4 +38,26 @@ func CrearRegistro(w http.ResponseWriter, r *http.Request) {
 	}
 	//se registran los datos del nodemcu
 	w.WriteHeader(http.StatusCreated)
+}
+
+func ListarDatos(w http.ResponseWriter, r *http.Request) {
+	page := r.URL.Query().Get("page")
+	fecha := r.URL.Query().Get("fecha")
+	hora := r.URL.Query().Get("hora")
+
+	pagTemp, err := strconv.Atoi(page)
+	if err != nil {
+		http.Error(w, "debe enviar el parametro pagina como entero mayor a cero", http.StatusBadRequest)
+		return
+	}
+	pag := int64(pagTemp)
+
+	result, status := db.ObtenerRegistros(IDDatos, pag, fecha, hora)
+	if status != false {
+		http.Error(w, "error al leer datos", http.StatusBadRequest)
+	}
+
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(http.StatusCreated)
+	json.NewEncoder(w).Encode(result)
 }
