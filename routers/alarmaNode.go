@@ -10,24 +10,24 @@ import (
 	"strings"
 )
 
-func CrearRegistroDatos(w http.ResponseWriter, r *http.Request) {
+func CrearRegistroAlarma(w http.ResponseWriter, r *http.Request) {
 	x := r.Header.Get("Authorization")
 	auth := strings.Replace(x, "Basic ", "", -1)
 	defer r.Body.Close()
-	var t models.Datos
-	t.MacNodemcu=auth
+	var a models.Alarma
+	a.MacNodemcu=auth
 	_, encontrado, _ := db.RevisarSiExisteNodemcu(auth)
 	if encontrado == true {
 		http.Error(w, "No existe este dispositivo", 400)
 		return
 	}
-	err := json.NewDecoder(r.Body).Decode(&t)
+	err := json.NewDecoder(r.Body).Decode(&a)
 	if err != nil {
 		http.Error(w, "Error en los datos recibidos "+err.Error(), 400)
 		return
 	}
-	log.Println("json:", t)
-	_, status, err := db.InsertoDatos(t)
+	log.Println("json:", a)
+	_, status, err := db.InsertoAlarma(a)
 	if err != nil {
 		http.Error(w, "Error al intentar el registro de datos "+err.Error(), 400)
 		return
@@ -40,10 +40,11 @@ func CrearRegistroDatos(w http.ResponseWriter, r *http.Request) {
 	w.WriteHeader(http.StatusCreated)
 }
 
-func ListarDatos(w http.ResponseWriter, r *http.Request) {
+func ListarAlarmas(w http.ResponseWriter, r *http.Request) {
 	page := r.URL.Query().Get("page")
 	fecha := r.URL.Query().Get("fecha")
 	hora := r.URL.Query().Get("hora")
+	tipo := r.URL.Query().Get("tipo")
 
 	pagTemp, err := strconv.Atoi(page)
 	if err != nil {
@@ -52,7 +53,7 @@ func ListarDatos(w http.ResponseWriter, r *http.Request) {
 	}
 	pag := int64(pagTemp)
 
-	result, status := db.ObtenerRegistros(IDDatos, pag, fecha, hora)
+	result, status := db.ObtenerAlarmas(IDAlarma, pag, fecha, hora, tipo)
 	if status != false {
 		http.Error(w, "error al leer datos", http.StatusBadRequest)
 	}
@@ -61,4 +62,3 @@ func ListarDatos(w http.ResponseWriter, r *http.Request) {
 	w.WriteHeader(http.StatusCreated)
 	json.NewEncoder(w).Encode(result)
 }
-

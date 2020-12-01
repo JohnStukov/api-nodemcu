@@ -2,10 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="86f68305-0794-4733-a05d-8ee85f20fca6" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/db/alarma.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/models/alarma.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/routers/alarmaNode.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db/datos.go" beforeDir="false" afterPath="$PROJECT_DIR$/db/datos.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/handlers/handlers.go" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/handlers.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/datosNodemcu.go" beforeDir="false" afterPath="$PROJECT_DIR$/models/datosNodemcu.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routers/datosNode.go" beforeDir="false" afterPath="$PROJECT_DIR$/routers/datosNode.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routers/procesoToken.go" beforeDir="false" afterPath="$PROJECT_DIR$/routers/procesoToken.go" afterDir="false" />
     </list>
@@ -92,22 +93,22 @@
       <screen x="-1366" y="0" width="1366" height="768" />
     </state>
     <state x="-903" y="126" key="FileChooserDialogImpl/0.0.1920.1040/-1366.0.1366.768@-1366.0.1366.768" timestamp="1606528756776" />
-    <state width="1323" height="2" key="GridCell.Tab.0.bottom" timestamp="1606698150280">
+    <state width="1323" height="75" key="GridCell.Tab.0.bottom" timestamp="1606701598913">
       <screen x="-1366" y="0" width="1366" height="768" />
     </state>
-    <state width="1323" height="2" key="GridCell.Tab.0.bottom/0.0.1920.1040/-1366.0.1366.768@-1366.0.1366.768" timestamp="1606698150280" />
-    <state width="1323" height="2" key="GridCell.Tab.0.center" timestamp="1606698150279">
+    <state width="1323" height="75" key="GridCell.Tab.0.bottom/0.0.1920.1040/-1366.0.1366.768@-1366.0.1366.768" timestamp="1606701598913" />
+    <state width="1323" height="75" key="GridCell.Tab.0.center" timestamp="1606701598913">
       <screen x="-1366" y="0" width="1366" height="768" />
     </state>
-    <state width="1323" height="2" key="GridCell.Tab.0.center/0.0.1920.1040/-1366.0.1366.768@-1366.0.1366.768" timestamp="1606698150279" />
-    <state width="1323" height="2" key="GridCell.Tab.0.left" timestamp="1606698150278">
+    <state width="1323" height="75" key="GridCell.Tab.0.center/0.0.1920.1040/-1366.0.1366.768@-1366.0.1366.768" timestamp="1606701598913" />
+    <state width="1323" height="75" key="GridCell.Tab.0.left" timestamp="1606701598912">
       <screen x="-1366" y="0" width="1366" height="768" />
     </state>
-    <state width="1323" height="2" key="GridCell.Tab.0.left/0.0.1920.1040/-1366.0.1366.768@-1366.0.1366.768" timestamp="1606698150278" />
-    <state width="1323" height="2" key="GridCell.Tab.0.right" timestamp="1606698150280">
+    <state width="1323" height="75" key="GridCell.Tab.0.left/0.0.1920.1040/-1366.0.1366.768@-1366.0.1366.768" timestamp="1606701598912" />
+    <state width="1323" height="75" key="GridCell.Tab.0.right" timestamp="1606701598913">
       <screen x="-1366" y="0" width="1366" height="768" />
     </state>
-    <state width="1323" height="2" key="GridCell.Tab.0.right/0.0.1920.1040/-1366.0.1366.768@-1366.0.1366.768" timestamp="1606698150280" />
+    <state width="1323" height="75" key="GridCell.Tab.0.right/0.0.1920.1040/-1366.0.1366.768@-1366.0.1366.768" timestamp="1606701598913" />
     <state x="-1182" y="29" key="SettingsEditor" timestamp="1606545897554">
       <screen x="-1366" y="0" width="1366" height="768" />
     </state>
