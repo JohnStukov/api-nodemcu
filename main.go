@@ -9,7 +9,7 @@ import (
 
 func main() {
 	if db.RevisarConexion() == 0 {
-		log.Fatal("Sin conexion a la db")
+		log.Fatal("Sin conexión a la db")
 		return
 	}
 	handlers.Manejadores()

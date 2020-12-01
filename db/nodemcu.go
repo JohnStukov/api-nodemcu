@@ -16,8 +16,8 @@ func RevisarSiExisteNodemcu(tok string) (models.Nodemcu, bool, string) {
 	defer cancel()
 	condicion := bson.M{"token":tok,"status":"ok"}
 	var resultado models.Nodemcu
-	err := colU.FindOne(ctx, condicion).Decode(&resultado)
-	ID := resultado.ID.Hex()
+	err := colN.FindOne(ctx, condicion).Decode(&resultado)
+	ID := resultado.T
 	if err != nil {
 		return resultado, false, ID
 	}

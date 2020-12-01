@@ -4,7 +4,6 @@ import (
 	"encoding/json"
 	"github.com/Ignis-Divine/api-nodemcu/db"
 	"github.com/Ignis-Divine/api-nodemcu/models"
-	"log"
 	"net/http"
 	"strconv"
 	"strings"
@@ -16,8 +15,8 @@ func CrearRegistroAlarma(w http.ResponseWriter, r *http.Request) {
 	defer r.Body.Close()
 	var a models.Alarma
 	a.MacNodemcu=auth
-	_, encontrado, _ := db.RevisarSiExisteNodemcu(auth)
-	if encontrado == true {
+	n, encontrado, _ := db.RevisarSiExisteNodemcu(auth)
+	if encontrado != true {
 		http.Error(w, "No existe este dispositivo", 400)
 		return
 	}
@@ -26,7 +25,6 @@ func CrearRegistroAlarma(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, "Error en los datos recibidos "+err.Error(), 400)
 		return
 	}
-	log.Println("json:", a)
 	_, status, err := db.InsertoAlarma(a)
 	if err != nil {
 		http.Error(w, "Error al intentar el registro de datos "+err.Error(), 400)
@@ -36,7 +34,8 @@ func CrearRegistroAlarma(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, "No se logro el registro de los datos ", 400)
 		return
 	}
-	//se registran los datos del nodemcu
+	//se registran los datos del nodemcu y se enviá un mensaje de texto
+	Txt(n.D, a.Tipo)
 	w.WriteHeader(http.StatusCreated)
 }
 
@@ -48,7 +47,7 @@ func ListarAlarmas(w http.ResponseWriter, r *http.Request) {
 
 	pagTemp, err := strconv.Atoi(page)
 	if err != nil {
-		http.Error(w, "debe enviar el parametro pagina como entero mayor a cero", http.StatusBadRequest)
+		http.Error(w, "debe enviar el parámetro pagina como entero mayor a cero", http.StatusBadRequest)
 		return
 	}
 	pag := int64(pagTemp)
