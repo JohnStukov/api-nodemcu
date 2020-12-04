@@ -11,7 +11,7 @@ import (
 )
 
 var dbD = MongoCN.Database("nosql")
-var colD = dbD.Collection("prueba")
+var colD = dbD.Collection("datos")
 
 /*InsertoDatos es la parada final con la BD para insertar los datos del usuario */
 func InsertoDatos(datos models.Datos) (string, bool, error) {

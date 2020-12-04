@@ -4,7 +4,6 @@ import (
 	"encoding/json"
 	"github.com/Ignis-Divine/api-nodemcu/db"
 	"github.com/Ignis-Divine/api-nodemcu/models"
-	"log"
 	"net/http"
 	"strconv"
 	"strings"
@@ -17,7 +16,7 @@ func CrearRegistroDatos(w http.ResponseWriter, r *http.Request) {
 	var t models.Datos
 	t.MacNodemcu=auth
 	_, encontrado, _ := db.RevisarSiExisteNodemcu(auth)
-	if encontrado == true {
+	if encontrado != true {
 		http.Error(w, "No existe este dispositivo", 400)
 		return
 	}
@@ -26,7 +25,6 @@ func CrearRegistroDatos(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, "Error en los datos recibidos "+err.Error(), 400)
 		return
 	}
-	log.Println("json:", t)
 	_, status, err := db.InsertoDatos(t)
 	if err != nil {
 		http.Error(w, "Error al intentar el registro de datos "+err.Error(), 400)
