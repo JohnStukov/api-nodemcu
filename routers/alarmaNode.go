@@ -15,7 +15,7 @@ func CrearRegistroAlarma(w http.ResponseWriter, r *http.Request) {
 	defer r.Body.Close()
 	var a models.Alarma
 	a.MacNodemcu=auth
-	n, encontrado, _ := db.RevisarSiExisteNodemcu(auth)
+	n, encontrado, _ := db.RevisoSiExisteNodemcu(auth)
 	if encontrado != true {
 		http.Error(w, "No existe este dispositivo", 400)
 		return
@@ -35,7 +35,7 @@ func CrearRegistroAlarma(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	//se registran los datos del nodemcu y se enviá un mensaje de texto
-	Txt(n.D, a.Tipo)
+	Txt(n.Dispositivo, a.Tipo)
 	w.WriteHeader(http.StatusCreated)
 }
 
@@ -52,7 +52,7 @@ func ListarAlarmas(w http.ResponseWriter, r *http.Request) {
 	}
 	pag := int64(pagTemp)
 
-	result, status := db.ObtenerAlarmas(IDAlarma, pag, fecha, hora, tipo)
+	result, status := db.ObtenerAlarmas(IDUsuario, pag, fecha, hora, tipo)
 	if status != false {
 		http.Error(w, "error al leer datos", http.StatusBadRequest)
 	}

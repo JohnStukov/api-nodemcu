@@ -15,7 +15,7 @@ func CrearRegistroDatos(w http.ResponseWriter, r *http.Request) {
 	defer r.Body.Close()
 	var t models.Datos
 	t.MacNodemcu=auth
-	_, encontrado, _ := db.RevisarSiExisteNodemcu(auth)
+	_, encontrado, _ := db.RevisoSiExisteNodemcu(auth)
 	if encontrado != true {
 		http.Error(w, "No existe este dispositivo", 400)
 		return
@@ -50,7 +50,7 @@ func ListarDatos(w http.ResponseWriter, r *http.Request) {
 	}
 	pag := int64(pagTemp)
 
-	result, status := db.ObtenerRegistros(IDDatos, pag, fecha, hora)
+	result, status := db.ObtenerRegistros(IDUsuario, pag, fecha, hora)
 	if status != false {
 		http.Error(w, "error al leer datos", http.StatusBadRequest)
 	}

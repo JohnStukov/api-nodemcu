@@ -13,8 +13,6 @@ var Email string
 
 //IDUsuario es el ID devuelto del modelo, que se usara en todos los endpoints
 var IDUsuario string
-var IDDatos string
-var IDAlarma string
 
 //ProcesoToken realiza el proceso para extraer los valores, el error siempre va al final de los parametros de salida
 func ProcesoToken(tk string) (*models.Claim, bool, string, error) {
@@ -34,7 +32,7 @@ func ProcesoToken(tk string) (*models.Claim, bool, string, error) {
 		return miClave, nil
 	})
 	if err == nil {
-		_, encontrado, _ := db.RevisarSiExisteUsuario(claims.Email)
+		_, encontrado, _ := db.RevisoSiExisteUsuario(claims.Email)
 		if encontrado == true {
 			Email = claims.Email
 			IDUsuario = claims.ID.Hex()

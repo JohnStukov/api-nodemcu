@@ -12,7 +12,7 @@ import (
 )
 
 //Registro crea el registro del usuario
-func RegistroUsuarioAdmin(w http.ResponseWriter, r *http.Request) {
+func RegistrarUsuarioAdmin(w http.ResponseWriter, r *http.Request) {
 	var t models.Usuario
 	//el Body del http.response es un Stream, solo se lee una ves y se destruye
 	err := json.NewDecoder(r.Body).Decode(&t)
@@ -31,13 +31,13 @@ func RegistroUsuarioAdmin(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	//revisamos que haya correos repetidos
-	_, encontrado, _ := db.RevisarSiExisteUsuario(t.Email)
+	_, encontrado, _ := db.RevisoSiExisteUsuario(t.Email)
 	if encontrado == true {
 		http.Error(w, "Ya existe un usuario con este email ", 400)
 		return
 	}
 	//revisar si fue correcto el registro
-	_, status, err := db.InsertoRegistro(t)
+	_, status, err := db.InsertoRegistroUsuario(t)
 	if err != nil {
 		http.Error(w, "Error al intentar el registro de usuario "+err.Error(), 400)
 		return
@@ -80,7 +80,7 @@ func EliminarUsuario(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, "Debe enviar el parametro ID", http.StatusBadRequest)
 		return
 	}
-	_, err := db.BuscarUsuario(ID)
+	_, err := db.BuscoUsuario(ID)
 	if err != nil {
 		http.Error(w, "dato no encontrado "+err.Error(), 400)
 		return
@@ -102,7 +102,7 @@ func VerUsuario(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	usuario, err := db.BuscarUsuario(ID)
+	usuario, err := db.BuscoUsuario(ID)
 	if err != nil {
 		http.Error(w, "error al encontrar el registro"+err.Error(), 400)
 		return
@@ -124,7 +124,7 @@ func ListarUsuarios(w http.ResponseWriter, r *http.Request) {
 	}
 	pag := int64(pagTemp)
 
-	result, status := db.ListarUsuarios(IDUsuario, pag, busqueda)
+	result, status := db.ListoUsuarios(IDUsuario, pag, busqueda)
 	if status == false {
 		http.Error(w, "error al leer usuarios", http.StatusBadRequest)
 	}
@@ -172,7 +172,7 @@ func ObtenerImagen(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	perfil, err := db.BuscarUsuario(ID)
+	perfil, err := db.BuscoUsuario(ID)
 	if err != nil {
 		http.Error(w, "usuario no encontrado ", http.StatusBadRequest)
 		return

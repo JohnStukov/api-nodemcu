@@ -13,8 +13,8 @@ import (
 	var dbU = MongoCN.Database("nosql")
 	var colU = dbU.Collection("usuarios")
 
-/*InsertoRegistro es la parada final con la BD para insertar los datos del usuario */
-func InsertoRegistro(u models.Usuario) (string, bool, error) {
+/*InsertoRegistroUsuario es la parada final con la BD para insertar los datos del usuario */
+func InsertoRegistroUsuario(u models.Usuario) (string, bool, error) {
 	ctx, cancel := context.WithTimeout(context.Background(), 15*time.Second)
 	defer cancel()
 	u.ID = primitive.NewObjectID()
@@ -71,9 +71,9 @@ func ModificoRegistro(u models.Usuario, ID string) (bool, error) {
 }
 
 /*
-ListarUsuarios lista todos los usuarios registrados en el sistema,
+ListoUsuarios lista todos los usuarios registrados en el sistema,
 */
-func ListarUsuarios(ID string, page int64, busqueda string) ([]*models.Usuario, bool) {
+func ListoUsuarios(ID string, page int64, busqueda string) ([]*models.Usuario, bool) {
 	ctx, cancel := context.WithTimeout(context.Background(), 15*time.Second)
 	defer cancel()
 	var resultados []*models.Usuario
@@ -109,7 +109,7 @@ func ListarUsuarios(ID string, page int64, busqueda string) ([]*models.Usuario, 
 	return resultados, false
 }
 
-func BuscarUsuario(ID string) (models.Usuario, error) {
+func BuscoUsuario(ID string) (models.Usuario, error) {
 	ctx, cancel := context.WithTimeout(context.Background(), time.Second*15)
 	defer cancel()
 	var usuario models.Usuario
@@ -126,8 +126,8 @@ func BuscarUsuario(ID string) (models.Usuario, error) {
 	return usuario, nil
 }
 
-//RevisarSiExisteUsuario recibe el email de parametro y revisa si ya existe en la db
-func RevisarSiExisteUsuario(email string) (models.Usuario, bool, string) {
+//RevisoSiExisteUsuario recibe el email de parametro y revisa si ya existe en la db
+func RevisoSiExisteUsuario(email string) (models.Usuario, bool, string) {
 	ctx, cancel := context.WithTimeout(context.Background(), 15*time.Second)
 	defer cancel()
 	condicion := bson.M{"email": email}

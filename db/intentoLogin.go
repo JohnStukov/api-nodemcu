@@ -7,7 +7,7 @@ import (
 
 //IntentoLogin revisa el usuario en la db
 func IntentoLogin(email string, password string) (models.Usuario, bool) {
-	usu, encontrado, _ := RevisarSiExisteUsuario(email)
+	usu, encontrado, _ := RevisoSiExisteUsuario(email)
 	if encontrado == false {
 		return usu, false
 	}
