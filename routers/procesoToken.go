@@ -31,7 +31,7 @@ func ProcesoToken(tk string) (*models.Claim, bool, string, error) {
 	tkn, err := jwt.ParseWithClaims(tk, claims, func(token *jwt.Token) (interface{}, error) {
 		return miClave, nil
 	})
-	if err == nil {
+	if err != nil {
 		_, encontrado, _ := db.RevisoSiExisteUsuario(claims.Email)
 		if encontrado == true {
 			Email = claims.Email

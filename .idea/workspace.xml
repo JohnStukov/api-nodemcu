@@ -20,15 +20,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="86f68305-0794-4733-a05d-8ee85f20fca6" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/routers/nodemcu.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db/intentoLogin.go" beforeDir="false" afterPath="$PROJECT_DIR$/db/intentoLogin.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db/nodemcu.go" beforeDir="false" afterPath="$PROJECT_DIR$/db/nodemcu.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db/usuarioAdmin.go" beforeDir="false" afterPath="$PROJECT_DIR$/db/usuarioAdmin.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/handlers/handlers.go" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/handlers.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/nodemcu.go" beforeDir="false" afterPath="$PROJECT_DIR$/models/nodemcu.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routers/alarmaNode.go" beforeDir="false" afterPath="$PROJECT_DIR$/routers/alarmaNode.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routers/datosNode.go" beforeDir="false" afterPath="$PROJECT_DIR$/routers/datosNode.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/middleW/revisarDB.go" beforeDir="false" afterPath="$PROJECT_DIR$/middleW/revisarDB.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routers/procesoToken.go" beforeDir="false" afterPath="$PROJECT_DIR$/routers/procesoToken.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routers/usuarioAdmin.go" beforeDir="false" afterPath="$PROJECT_DIR$/routers/usuarioAdmin.go" afterDir="false" />
     </list>
@@ -60,6 +53,7 @@
   <component name="PropertiesComponent">
     <property name="DefaultGoTemplateProperty" value="Go File" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="go.import.settings.migrated" value="true" />
     <property name="go.sdk.automatically.set" value="true" />
@@ -115,50 +109,9 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VgoProject">
     <integration-enabled>true</integration-enabled>
-  </component>
-  <component name="WindowStateProjectService">
-    <state x="-912" y="186" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1606519928449">
-      <screen x="-1366" y="0" width="1366" height="768" />
-    </state>
-    <state x="-912" y="186" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1040/-1366.0.1366.768@-1366.0.1366.768" timestamp="1606519928449" />
-    <state x="-1274" y="92" width="1182" height="544" key="DiffContextDialog" timestamp="1606867291764">
-      <screen x="-1366" y="0" width="1366" height="728" />
-    </state>
-    <state x="-1274" y="92" width="1182" height="544" key="DiffContextDialog/0.0.1920.1040/-1366.0.1366.728@-1366.0.1366.728" timestamp="1606867291764" />
-    <state x="-903" y="126" key="FileChooserDialogImpl" timestamp="1606528756776">
-      <screen x="-1366" y="0" width="1366" height="768" />
-    </state>
-    <state x="-903" y="126" key="FileChooserDialogImpl/0.0.1920.1040/-1366.0.1366.768@-1366.0.1366.768" timestamp="1606528756776" />
-    <state width="1323" height="228" key="GridCell.Tab.0.bottom" timestamp="1607138405070">
-      <screen x="-1366" y="0" width="1366" height="728" />
-    </state>
-    <state width="1323" height="228" key="GridCell.Tab.0.bottom/0.0.1920.1040/-1366.0.1366.728@-1366.0.1366.728" timestamp="1607138405070" />
-    <state width="1877" height="170" key="GridCell.Tab.0.bottom/0.0.1920.1040/-1366.0.1366.728@0.0.1920.1040" timestamp="1606849879103" />
-    <state width="1323" height="235" key="GridCell.Tab.0.bottom/0.0.1920.1040/-1366.0.1366.768@-1366.0.1366.768" timestamp="1606788117206" />
-    <state width="1323" height="228" key="GridCell.Tab.0.center" timestamp="1607138405070">
-      <screen x="-1366" y="0" width="1366" height="728" />
-    </state>
-    <state width="1323" height="228" key="GridCell.Tab.0.center/0.0.1920.1040/-1366.0.1366.728@-1366.0.1366.728" timestamp="1607138405070" />
-    <state width="1877" height="170" key="GridCell.Tab.0.center/0.0.1920.1040/-1366.0.1366.728@0.0.1920.1040" timestamp="1606849879103" />
-    <state width="1323" height="235" key="GridCell.Tab.0.center/0.0.1920.1040/-1366.0.1366.768@-1366.0.1366.768" timestamp="1606788117205" />
-    <state width="1323" height="228" key="GridCell.Tab.0.left" timestamp="1607138405070">
-      <screen x="-1366" y="0" width="1366" height="728" />
-    </state>
-    <state width="1323" height="228" key="GridCell.Tab.0.left/0.0.1920.1040/-1366.0.1366.728@-1366.0.1366.728" timestamp="1607138405070" />
-    <state width="1877" height="170" key="GridCell.Tab.0.left/0.0.1920.1040/-1366.0.1366.728@0.0.1920.1040" timestamp="1606849879102" />
-    <state width="1323" height="235" key="GridCell.Tab.0.left/0.0.1920.1040/-1366.0.1366.768@-1366.0.1366.768" timestamp="1606788117205" />
-    <state width="1323" height="228" key="GridCell.Tab.0.right" timestamp="1607138405070">
-      <screen x="-1366" y="0" width="1366" height="728" />
-    </state>
-    <state width="1323" height="228" key="GridCell.Tab.0.right/0.0.1920.1040/-1366.0.1366.728@-1366.0.1366.728" timestamp="1607138405070" />
-    <state width="1877" height="170" key="GridCell.Tab.0.right/0.0.1920.1040/-1366.0.1366.728@0.0.1920.1040" timestamp="1606849879103" />
-    <state width="1323" height="235" key="GridCell.Tab.0.right/0.0.1920.1040/-1366.0.1366.768@-1366.0.1366.768" timestamp="1606788117205" />
-    <state x="-1182" y="29" key="SettingsEditor" timestamp="1606787571897">
-      <screen x="-1366" y="0" width="1366" height="768" />
-    </state>
-    <state x="-1182" y="29" key="SettingsEditor/0.0.1920.1040/-1366.0.1366.768@-1366.0.1366.768" timestamp="1606787571897" />
   </component>
 </project>

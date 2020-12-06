@@ -125,7 +125,7 @@ func ListarUsuarios(w http.ResponseWriter, r *http.Request) {
 	pag := int64(pagTemp)
 
 	result, status := db.ListoUsuarios(IDUsuario, pag, busqueda)
-	if status == false {
+	if status != false {
 		http.Error(w, "error al leer usuarios", http.StatusBadRequest)
 	}
 
