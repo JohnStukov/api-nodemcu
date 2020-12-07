@@ -49,8 +49,8 @@ func RegistrarNodemcu(w http.ResponseWriter, r *http.Request) {
 	w.WriteHeader(http.StatusCreated)
 }
 
-
 func ModificarNodemcu(w http.ResponseWriter, r *http.Request) {
+	ID := r.URL.Query().Get("id")
 	var t models.Nodemcu
 	//grabamos el body
 	err := json.NewDecoder(r.Body).Decode(&t)
@@ -60,7 +60,7 @@ func ModificarNodemcu(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	var status bool
-	status, err = db.ModificoNodemcu(t, IDUsuario)
+	status, err = db.ModificoNodemcu(t, ID)
 	if err != nil {
 		http.Error(w, "ocurrio un error al modificar el registro, intente de nuevo "+err.Error(), 400)
 		return
@@ -120,7 +120,7 @@ func ListarNodemcus(w http.ResponseWriter, r *http.Request) {
 	}
 	pag := int64(pagTemp)
 	result, status := db.ListoNodemcus(IDUsuario, pag, busqueda)
-	if status == false {
+	if status != false {
 		http.Error(w, "error al leer usuarios", http.StatusBadRequest)
 	}
 	w.Header().Set("Content-Type", "application/json")

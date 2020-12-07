@@ -21,9 +21,9 @@
   <component name="ChangeListManager">
     <list default="true" id="86f68305-0794-4733-a05d-8ee85f20fca6" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/middleW/revisarDB.go" beforeDir="false" afterPath="$PROJECT_DIR$/middleW/revisarDB.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routers/procesoToken.go" beforeDir="false" afterPath="$PROJECT_DIR$/routers/procesoToken.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routers/usuarioAdmin.go" beforeDir="false" afterPath="$PROJECT_DIR$/routers/usuarioAdmin.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/nodemcu.go" beforeDir="false" afterPath="$PROJECT_DIR$/db/nodemcu.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handlers/handlers.go" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/handlers.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routers/nodemcu.go" beforeDir="false" afterPath="$PROJECT_DIR$/routers/nodemcu.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

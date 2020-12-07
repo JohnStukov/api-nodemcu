@@ -46,6 +46,9 @@ func ModificoNodemcu(n models.Nodemcu, ID string) (bool, error) {
 	if len(n.Dispositivo) > 0 {
 		registro["dispositivo"] = n.Dispositivo
 	}
+	if len(n.Token) > 0 {
+		registro["token"] = n.Token
+	}
 	if len(n.Status) > 0 {
 		registro["status"] = n.Status
 	}
@@ -55,7 +58,7 @@ func ModificoNodemcu(n models.Nodemcu, ID string) (bool, error) {
 	//Proceso de actualizacion
 	//convierte el ID de string a objID
 	objID, _ := primitive.ObjectIDFromHex(ID)
-	//filtar usuario
+	//filtar nodemcu
 	filtro := bson.M{"_id": bson.M{"$eq": objID}}
 	//db
 	_, err := colN.UpdateOne(ctx, filtro, updateString)

@@ -18,10 +18,10 @@ func Manejadores() {
 	router.HandleFunc("/login", middleW.RevisarDB(routers.Login)).Methods("POST")
 	//-----------------------------USUARIOS---------------------------------//
 	router.HandleFunc("/usuarios/registro", middleW.RevisarDB(routers.RegistrarUsuarioAdmin)).Methods("POST")
-	router.HandleFunc("/usuarios/verUsuario", middleW.RevisarDB(middleW.ValidoJWT(routers.VerUsuario))).Methods("GET")
-	router.HandleFunc("/usuarios/modificarUsuario", middleW.RevisarDB(middleW.ValidoJWT(routers.ModificarUsuario))).Methods("PUT")
-	router.HandleFunc("/usuarios/eliminarUsuario", middleW.RevisarDB(middleW.ValidoJWT(routers.EliminarUsuario))).Methods("DELETE")
-	router.HandleFunc("/usuarios", middleW.RevisarDB(middleW.ValidoJWT(routers.ListarUsuarios))).Methods("GET")
+	router.HandleFunc("/usuarios/ver", middleW.RevisarDB(middleW.ValidoJWT(routers.VerUsuario))).Methods("GET")
+	router.HandleFunc("/usuarios/modificar", middleW.RevisarDB(middleW.ValidoJWT(routers.ModificarUsuario))).Methods("PUT")
+	router.HandleFunc("/usuarios/eliminar", middleW.RevisarDB(middleW.ValidoJWT(routers.EliminarUsuario))).Methods("DELETE")
+	router.HandleFunc("/usuarios/lista", middleW.RevisarDB(middleW.ValidoJWT(routers.ListarUsuarios))).Methods("GET")
 	//-----------------------------NODEMCUS---------------------------------//
 	router.HandleFunc("/nodemcu/registro", middleW.RevisarDB(routers.RegistrarNodemcu)).Methods("POST")
 	router.HandleFunc("/nodemcu/ver", middleW.RevisarDB(middleW.ValidoJWT(routers.VerNodemcu))).Methods("GET")
