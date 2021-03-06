@@ -9,7 +9,7 @@ import (
 
 //MongoCN es el objeto de conexion a la db
 var MongoCN = ConectarDB()
-var clientOption = options.Client().ApplyURI("mongodb+srv://juan:Metalliquid1606@cluster0.g1ibp.mongodb.net/nosql?retryWrites=true&w=majority")
+var clientOption = options.Client().ApplyURI("mongodb://root:123456@localhost:27017")
 
 //ConetarDB ES LA FUNCION Q ME PERMITE CONECTAR A LA BASE DE DATOS
 func ConectarDB() *mongo.Client {
