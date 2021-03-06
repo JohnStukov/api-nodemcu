@@ -19,16 +19,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="86f68305-0794-4733-a05d-8ee85f20fca6" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.github/workflows/go.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-nodemcu.exe" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/db/conexionDB.go" beforeDir="false" afterPath="$PROJECT_DIR$/db/conexionDB.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/handlers/handlers.go" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/handlers.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/datosNodemcu.go" beforeDir="false" afterPath="$PROJECT_DIR$/models/datosNodemcu.go" afterDir="false" />
-    </list>
+    <list default="true" id="86f68305-0794-4733-a05d-8ee85f20fca6" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -112,7 +103,19 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="origin/master" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>

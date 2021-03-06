@@ -5,29 +5,27 @@ import (
 	"github.com/Ignis-Divine/api-nodemcu/db"
 	"github.com/Ignis-Divine/api-nodemcu/models"
 	jwt "github.com/dgrijalva/jwt-go"
+	"strings"
 )
 
-//variables que vamos a exportar en todas las rutas
-//Email valor Email para ser usado en todos los endpoints
+/*Email valor de Email usado en todos los EndPoints */
 var Email string
 
-//IDUsuario es el ID devuelto del modelo, que se usara en todos los endpoints
+/*IDUsuario es el ID devuelto del modelo, que se usará en todos los EndPoints */
 var IDUsuario string
 
-//ProcesoToken realiza el proceso para extraer los valores, el error siempre va al final de los parametros de salida
+/*ProcesoToken proceso token para extraer sus valores */
 func ProcesoToken(tk string) (*models.Claim, bool, string, error) {
 	miClave := []byte("qwerty_12345")
 	claims := &models.Claim{}
 
-	/*quitamos la palabra standar Bearer
 	splitToken := strings.Split(tk, "Bearer")
 	if len(splitToken) != 2 {
-		return claims, false, string(""), errors.New("formato de token no valido")
+		return claims, false, string(""), errors.New("formato de token invalido")
 	}
-	tk = strings.TrimSpace(splitToken[1])
-	*/ //quitamos la palabra standar Bearer
 
-	//esto hace la validacion misma del token
+	tk = strings.TrimSpace(splitToken[1])
+
 	tkn, err := jwt.ParseWithClaims(tk, claims, func(token *jwt.Token) (interface{}, error) {
 		return miClave, nil
 	})
@@ -40,7 +38,7 @@ func ProcesoToken(tk string) (*models.Claim, bool, string, error) {
 		return claims, encontrado, IDUsuario, nil
 	}
 	if !tkn.Valid {
-		return claims, false, string(""), errors.New("token invalido")
+		return claims, false, string(""), errors.New("token Inválido")
 	}
 	return claims, false, string(""), err
 }
