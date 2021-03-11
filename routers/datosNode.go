@@ -4,7 +4,6 @@ import (
 	"encoding/json"
 	"github.com/Ignis-Divine/api-nodemcu/db"
 	"github.com/Ignis-Divine/api-nodemcu/models"
-	"log"
 	"net/http"
 	"strconv"
 	"strings"
@@ -22,7 +21,6 @@ func CrearRegistroDatos(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	err := json.NewDecoder(r.Body).Decode(&t)
-	log.Println(t)
 	if err != nil {
 		http.Error(w, "Error en los datos recibidos "+err.Error(), 400)
 		return
