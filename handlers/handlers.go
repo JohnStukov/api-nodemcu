@@ -4,6 +4,7 @@ import (
 	"github.com/Ignis-Divine/api-nodemcu/middleW"
 	"github.com/Ignis-Divine/api-nodemcu/routers"
 	"github.com/gorilla/mux"
+	"github.com/go-chi/chi/middleware"
 	"github.com/rs/cors"
 	"log"
 	"net/http"
@@ -13,7 +14,10 @@ import (
 //Manejadores, configuro el puerto, el handler y se pone en escucha el servidor
 func Manejadores() {
 	router := mux.NewRouter()
-
+	router.Use(
+		middleware.Logger, //log every http request
+		middleware.Recoverer, //recover if panic occurs
+	)
 	//-----------------------------RUTAS------------------------------------//
 	//-----------------------------LOGIN------------------------------------//
 	router.HandleFunc("/login", middleW.RevisarDB(routers.Login)).Methods("POST")
