@@ -3,8 +3,8 @@ package handlers
 import (
 	"github.com/Ignis-Divine/api-nodemcu/middleW"
 	"github.com/Ignis-Divine/api-nodemcu/routers"
-	"github.com/gorilla/mux"
 	"github.com/go-chi/chi/middleware"
+	"github.com/gorilla/mux"
 	"github.com/rs/cors"
 	"log"
 	"net/http"
@@ -35,7 +35,7 @@ func Manejadores() {
 	router.HandleFunc("/nodemcu/lista", middleW.RevisarDB(middleW.ValidoJWT(routers.ListarNodemcus))).Methods("GET")
 	//-----------------------------DATOS SENSORES---------------------------//
 	router.HandleFunc("/nodemcu", middleW.RevisarDB(routers.CrearRegistroDatos)).Methods("POST")
-	router.HandleFunc("/nodemcu", middleW.RevisarDB(middleW.ValidoJWT(routers.ListarDatos))).Methods("GET")
+	router.HandleFunc("/nodemcu", middleW.RevisarDB(routers.ListarDatos)).Methods("GET")
 	//----------------------------------------------------------------------//
 
 	PORT := os.Getenv("PORT")
