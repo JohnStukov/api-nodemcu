@@ -39,8 +39,8 @@ func ObtenerRegistros(ID string, page int64, fecha string, hora string) ([]*mode
 	defer cancel()
 	var resultados []*models.Datos
 	findOptions := options.Find()
-	findOptions.SetSkip((page - 1) * 20)
-	findOptions.SetLimit(20)
+	findOptions.SetSkip((page - 1) * 200)
+	findOptions.SetLimit(200)
 	qury := bson.M{
 		//?i no se fija si son mayusculas y minusculas
 		"fecha": bson.M{"$regex": `(?i)` + fecha},
